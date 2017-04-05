@@ -43,7 +43,7 @@ inputDataSet(i, j) = 0;
 
 %% PCA
 [coefs,scores,variances,t2] = princomp(inputDataSet');
-inputDataSet = scores(:,1);
+inputDataSet = scores(:,2);
 inputDataSet = inputDataSet';
 
 end
