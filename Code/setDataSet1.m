@@ -1,11 +1,10 @@
-function [ inputDataSet, targetsSet ] = setDataSet()
+function [ inputDataSet, targetsSet ] = setDataSet1()
+
+global parameter;
 
 textureDescriptorsFolderRoot = 'textureDescriptors/';
 folders = dir('textureDescriptors\');
 folders = folders(3:size(folders, 1));
-foldersWithRealFingers = [1 5 6];
-% foldersWithRealFingers = [1];
-% foldersWithObfuscatedFingers = [2 19];
 
 inputDataSet = [];
 targetsSet = [];
@@ -14,10 +13,8 @@ target = 0;
 for i = 1:size(folders, 1)
     textureDescriptorsFiles = dir(strcat(textureDescriptorsFolderRoot, num2str(i), '/*.mat'));
     
-    if any(i == foldersWithRealFingers) == 1
+    if any(i == 1) == 1
         target = 1;
-%     elseif any(i == foldersWithObfuscatedFingers) == 1
-%         target = 0;
     else
         target = -1;
     end
@@ -43,7 +40,7 @@ inputDataSet(i, j) = 0;
 
 %% PCA
 [coefs,scores,variances,t2] = princomp(inputDataSet');
-inputDataSet = scores(:,2);
+inputDataSet = scores(:,1:parameter.numberPCAToUse);
 inputDataSet = inputDataSet';
 
 end

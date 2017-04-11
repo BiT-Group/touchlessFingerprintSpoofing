@@ -2,7 +2,6 @@
 % close all;
 % clc;
 
-% generateMetrics1;
-% generateMetrics2;
-% generateMetrics3;
-generateMetrics;
+generateMetrics1;
+generateMetrics2;
+generateMetrics3;

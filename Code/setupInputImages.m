@@ -2,6 +2,10 @@ close all;
 clear all;
 clc;
 
+loadParameters;
+
+global parameter
+
 samplesFolderRoot = '../Samples/';
 
 inputFolderRoot = 'input/';
@@ -46,3 +50,14 @@ while folderExists == 1
 end
 
 fprintf('\n%d images acquired!\n\nDone!\n', counter);
+
+%% Copying 'real finger' images to a single folder
+for i = 2:size(parameter.foldersWithRealFingers, 2)
+    j = parameter.foldersWithRealFingers(i);
+    origem = strcat(inputFolderRoot, num2str(j), '/*.pgm');
+    movefile(origem, 'input/1');
+    rmdir(strcat(inputFolderRoot, num2str(j)));
+end
+
+%% Renaming folders
+% TO DO
