@@ -8,9 +8,11 @@ close all;
 clear all;
 clc;
 
-[inputDataSet, targetsSet] = setDataSet();
+%% Scenario 1: real fingers vs fake fingers (all classes togheter)
+trainNN1();
 
-% trainNN1(inputDataSet, targetsSet);
-% trainNN2(inputDataSet, targetsSet);
-% trainNN3(inputDataSet, targetsSet);
-trainNN(inputDataSet, targetsSet);
+%% Scenario 2: real fingers vs each fake finger's class (one against one)
+trainNN2();
+
+%% Scenario 3: all classes against all classes
+trainNN3();

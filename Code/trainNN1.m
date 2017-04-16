@@ -1,5 +1,7 @@
-function [ ] = trainNN1( inputDataSet, targetsSet )
+function [ ] = trainNN1()
 clc;
+
+[inputDataSet, targetsSet] = setDataSet1();
 
 if exist('net/', 'dir') ~= 7
     mkdir('net/');

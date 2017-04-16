@@ -18,7 +18,7 @@ end
 
 for i = 1:size(targetsSet, 2)
     if isequal(targetsSet(:, i), targetVec)
-        newInputs = [newInputs inputDataSet(:,i)];
+        newInputs = [newInputs inputDataSet(:, i)];
         newTargets = [newTargets -1];
     end
 end

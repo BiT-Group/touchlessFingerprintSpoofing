@@ -8,7 +8,7 @@ if exist('net/', 'dir') ~= 7
 end
 
 for targetClass = 2:4
-    [newInputs, newTargets] = reshapeSetsForClass(inputDataSet, targetsSet, targetClass);
+    [netInputs, netTargets] = reshapeSetsForClass(inputDataSet, targetsSet, targetClass);
     
     best_perform = Inf;
     minERROR = Inf;
@@ -18,7 +18,7 @@ for targetClass = 2:4
 
     for i = 10:20
         net = feedforwardnet(i);
-        net = configure(net, newInputs, newTargets);
+        net = configure(net, netInputs, netTargets);
         net.layers{1}.transferFcn = 'tansig';
         net.layers{2}.transferFcn = 'tansig';
     %     net.divideFcn = 'dividerand';
@@ -34,19 +34,19 @@ for targetClass = 2:4
         for j = 1:20
             net = init(net);
             net.trainParam.showWindow = false;
-            [net, tr] = train(net, newInputs, newTargets);
-            netTestOutputs = net(newInputs(:, tr.testInd));
+            [net, tr] = train(net, netInputs, netTargets);
+            netTestOutputs = net(netInputs(:, tr.testInd));
     %         ERROR = sum(abs(netTestOutputs-targetsSet(:, tr.testInd)))/length(tr.testInd);
     %         ERROR = sum(eucledianDistance(WTA(netTestOutputs), targetsSet(:, tr.testInd)))/length(tr.testInd);
-            ERROR = sum(eucledianDistance(netTestOutputs, newTargets(:, tr.testInd)))/length(tr.testInd);
-            newTargets(:, tr.testInd)
+            ERROR = sum(eucledianDistance(netTestOutputs, netTargets(:, tr.testInd)))/length(tr.testInd);
+            netTargets(:, tr.testInd)
 
             if tr.best_tperf < best_perform
                 best_perform = tr.best_tperf;
                 best_i = i;
                 best_j = j;
                 minERROR = ERROR;
-                save(netOutputFileName, 'net', 'tr', 'inputDataSet', 'targetsSet', 'netTestOutputs');
+                save(netOutputFileName, 'net', 'tr', 'netInputs', 'netTargets', 'netTestOutputs');
             end
 
             clc
@@ -58,12 +58,12 @@ for targetClass = 2:4
     %% Visualizing data
     load(netOutputFileName);
 
-    figure, plot(newTargets(tr.testInd), net(newInputs(:, tr.testInd)), 'ro')
+    figure, plot(netTargets(tr.testInd), net(netInputs(:, tr.testInd)), 'ro')
     xlabel('Expected')
     ylabel('Predicted')
     grid on
 
-    [netTestOutputs ; newTargets(:, tr.testInd)]'
+    [netTestOutputs ; netTargets(:, tr.testInd)]'
 end
 
 end

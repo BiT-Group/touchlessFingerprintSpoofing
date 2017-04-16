@@ -1,4 +1,4 @@
-function [ ] = generateMatrics3()
+function [ ] = generateMetrics3()
 % close all;
 clear all;
 % clc;
@@ -34,14 +34,14 @@ hitRate = hitRate/i;
 fprintf('\n\nnnet:\nHit Rate: %.2f%%\n', hitRate*100);
 
 %% Ploting regression
-netOutputs = net(inputDataSet);
-trainOutputs = netOutputs(:, tr.trainInd);
-validationOutputs = netOutputs(:, tr.valInd);
-testOutputs = netOutputs(:, tr.testInd);
-trainTargets = targetsSet(tr.trainInd);
-validationTargets = targetsSet(tr.valInd);
-testTargets = targetsSet(tr.testInd);
-figure, plotregression(trainTargets,trainOutputs,'Training', validationTargets,validationOutputs,'Validation', testTargets,testOutputs,'Test', targetsSet,netOutputs,'All');
-
-figure, plotperform(tr);
+% netOutputs = net(inputDataSet);
+% trainOutputs = netOutputs(:, tr.trainInd);
+% validationOutputs = netOutputs(:, tr.valInd);
+% testOutputs = netOutputs(:, tr.testInd);
+% trainTargets = targetsSet(tr.trainInd);
+% validationTargets = targetsSet(tr.valInd);
+% testTargets = targetsSet(tr.testInd);
+% figure, plotregression(trainTargets,trainOutputs,'Training', validationTargets,validationOutputs,'Validation', testTargets,testOutputs,'Test', targetsSet,netOutputs,'All');
+% 
+% figure, plotperform(tr);
 end
