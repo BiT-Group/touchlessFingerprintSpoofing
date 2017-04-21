@@ -8,40 +8,38 @@ load net/nnet3.mat
 testInputSet = inputDataSet(:,tr.testInd);
 testTargetSet = targetsSet(:,tr.testInd);
 
-% FAR = 0;
-% FRR = 0;
 hitRate = 0;
+
+confusionMatrix = zeros(size(testTargetSet, 1));
 
 for i = 1:size(testInputSet, 2)
     %% Classification
-    evaluation = WTA(net(testInputSet(:, i)));
+    netEvaluation = WTA(net(testInputSet(:, i)));
     
     %% Updating metrics
-    if eucledianDistance(evaluation, testTargetSet(:, i)) == 0
+    [~, predictedClass] = max(netEvaluation);
+    [~, originalClass] = max(testTargetSet(:, i));
+    confusionMatrix(originalClass, predictedClass) = confusionMatrix(originalClass, predictedClass) + 1;
+    % Outro possível classificador
+%     x = [1 -1 -1 -1]
+%     y = x>0
+%     bi2de(y)
+    
+    if isequal(netEvaluation, testTargetSet(:, i))
         hitRate = hitRate + 1;
-%     elseif evaluation == -1 && testTargetSet(i) == 1
-%         FRR = FRR + 1;
-%     elseif evaluation == 1 && testTargetSet(i) == -1
-%         FAR = FAR + 1;
     end
 end
 
-% FAR = FAR/i;
-% FRR = FRR/i;
 hitRate = hitRate/i;
 
-% fprintf('\n\nnnet:\nHit Rate: %.2f%%\nFalse Accept Rate: %.2f%%\nFalse Negativ Rate: %.2f%%\n', hitRate*100, FAR*100, FRR*100);
 fprintf('\n\nnnet:\nHit Rate: %.2f%%\n', hitRate*100);
 
-%% Ploting regression
-% netOutputs = net(inputDataSet);
-% trainOutputs = netOutputs(:, tr.trainInd);
-% validationOutputs = netOutputs(:, tr.valInd);
-% testOutputs = netOutputs(:, tr.testInd);
-% trainTargets = targetsSet(tr.trainInd);
-% validationTargets = targetsSet(tr.valInd);
-% testTargets = targetsSet(tr.testInd);
-% figure, plotregression(trainTargets,trainOutputs,'Training', validationTargets,validationOutputs,'Validation', testTargets,testOutputs,'Test', targetsSet,netOutputs,'All');
-% 
-% figure, plotperform(tr);
+%% Print confusion matrix
+for i = 1:size(confusionMatrix, 1)
+   confusionMatrix(i,:) = (confusionMatrix(i,:)/sum(confusionMatrix(i,:)))*100;
+end
+
+fprintf('\nConfusion Matrix\n');
+display(confusionMatrix);
+
 end

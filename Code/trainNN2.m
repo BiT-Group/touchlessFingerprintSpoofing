@@ -7,7 +7,7 @@ if exist('net/', 'dir') ~= 7
     mkdir('net/');
 end
 
-for targetClass = 2:4
+for targetClass = 2:size(targetsSet, 1)
     [netInputs, netTargets] = reshapeSetsForClass(inputDataSet, targetsSet, targetClass);
     
     best_perform = Inf;
@@ -39,7 +39,7 @@ for targetClass = 2:4
     %         ERROR = sum(abs(netTestOutputs-targetsSet(:, tr.testInd)))/length(tr.testInd);
     %         ERROR = sum(eucledianDistance(WTA(netTestOutputs), targetsSet(:, tr.testInd)))/length(tr.testInd);
             ERROR = sum(eucledianDistance(netTestOutputs, netTargets(:, tr.testInd)))/length(tr.testInd);
-            netTargets(:, tr.testInd)
+%             netTargets(:, tr.testInd)
 
             if tr.best_tperf < best_perform
                 best_perform = tr.best_tperf;
@@ -50,20 +50,22 @@ for targetClass = 2:4
             end
 
             clc
-            fprintf('Training NN 1 vs %d\n===== Current =====\nNeurons: %d\nTraining attempt: %d\nERROR: %f\nPerformance: %f\n=====  Best   =====\nNeurons: %d\nTraining attempt: %d\nERROR: %f\nPerformance: %f', targetClass, i, j, ERROR, tr.best_tperf, best_i, best_j, minERROR, best_perform);
+            fprintf('Training NN 2: 1 vs %d\n===== Current =====\nNeurons: %d\nTraining attempt: %d\nERROR: %f\nPerformance: %f\n=====  Best   =====\nNeurons: %d\nTraining attempt: %d\nERROR: %f\nPerformance: %f', targetClass, i, j, ERROR, tr.best_tperf, best_i, best_j, minERROR, best_perform);
     %         targetsSet(:, tr.testInd)
         end
     end
 
     %% Visualizing data
-    load(netOutputFileName);
+%     load(netOutputFileName);
+% 
+%     figure, plot(netTargets(tr.testInd), net(netInputs(:, tr.testInd)), 'ro')
+%     xlabel('Expected')
+%     ylabel('Predicted')
+%     grid on
 
-    figure, plot(netTargets(tr.testInd), net(netInputs(:, tr.testInd)), 'ro')
-    xlabel('Expected')
-    ylabel('Predicted')
-    grid on
-
-    [netTestOutputs ; netTargets(:, tr.testInd)]'
+%     [netTestOutputs ; netTargets(:, tr.testInd)]'
 end
+
+fprintf('\n\n');
 
 end

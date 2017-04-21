@@ -3,7 +3,11 @@ function [ ] = generateMetrics2()
 clear all;
 % clc;
 
-for targetClass = 2:4
+cd net
+listing = dir('nnet2_1_vs_*');
+cd ..
+
+for targetClass = 2:size(listing, 1) + 1
     netOutputFileName = strcat('net/nnet2_1_vs_', num2str(targetClass), '.mat');
     load(netOutputFileName);
 
@@ -33,6 +37,7 @@ for targetClass = 2:4
         elseif netEvaluation(i) == 1 && testTargetSet(i) == -1
             FAR = FAR + 1;
         end
+        
     end
 
     FAR = FAR/i;

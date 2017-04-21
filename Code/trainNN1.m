@@ -64,7 +64,7 @@ xlabel('Expected')
 ylabel('Predicted')
 grid on
 
-[netTestOutputs ; localTargets(tr.testInd)]'
+% [netTestOutputs ; localTargets(tr.testInd)]'
 
 end
 

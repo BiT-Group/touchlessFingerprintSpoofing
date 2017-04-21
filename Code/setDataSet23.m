@@ -8,11 +8,11 @@ folders = folders(3:size(folders, 1));
 
 inputDataSet = [];
 targetsSet = [];
-target = 0;
+target = zeros(size(folders, 1), 1) - 1;
 
 %% Choosing correct amount of real fingers to match with the other classes
 textureDescriptorsFiles = dir(strcat(textureDescriptorsFolderRoot, '1/*.mat'));
-target = [1 -1 -1 -1]';
+target(1) = 1;
     
 textureDescriptorsFiles = datasample(textureDescriptorsFiles, parameter.numberOfSamplesEachClass, 'Replace', false);
     
@@ -28,16 +28,19 @@ end
 for i = 2:size(folders, 1)
     textureDescriptorsFiles = dir(strcat(textureDescriptorsFolderRoot, num2str(i), '/*.mat'));
     
-    switch i
-        case 2
-            target = [-1 1 -1 -1]';
-        case 3
-            target = [-1 -1 1 -1]';
-        case 4
-            target = [-1 -1 -1 1]';
-        otherwise
-            error('Invalid class')
-    end
+    target(i - 1) = -1;
+    target(i) = 1;
+    
+%     switch i
+%         case 2
+%             target = [-1 1 -1 -1]';
+%         case 3
+%             target = [-1 -1 1 -1]';
+%         case 4
+%             target = [-1 -1 -1 1]';
+%         otherwise
+%             error('Invalid class')
+%     end
     
     for j = 1:size(textureDescriptorsFiles, 1)
         load(strcat(textureDescriptorsFolderRoot, num2str(i), '/', textureDescriptorsFiles(j).name));

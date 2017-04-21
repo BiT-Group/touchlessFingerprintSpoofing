@@ -33,9 +33,8 @@ for i = 10:20
         [net, tr] = train(net, inputDataSet, targetsSet);
         netTestOutputs = net(inputDataSet(:, tr.testInd));
 %         ERROR = sum(abs(netTestOutputs-targetsSet(:, tr.testInd)))/length(tr.testInd);
-%         ERROR = sum(eucledianDistance(WTA(netTestOutputs), targetsSet(:, tr.testInd)))/length(tr.testInd);
         ERROR = sum(eucledianDistance(netTestOutputs, targetsSet(:, tr.testInd)))/length(tr.testInd);
-        targetsSet(:, tr.testInd)
+%         targetsSet(:, tr.testInd)
         
         if tr.best_tperf < best_perform
             best_perform = tr.best_tperf;
@@ -46,8 +45,7 @@ for i = 10:20
         end
         
         clc
-        fprintf('Training NN\n===== Current =====\nNeurons: %d\nTraining attempt: %d\nERROR: %f\nPerformance: %f\n=====  Best   =====\nNeurons: %d\nTraining attempt: %d\nERROR: %f\nPerformance: %f', i, j, ERROR, tr.best_tperf, best_i, best_j, minERROR, best_perform);
-%         targetsSet(:, tr.testInd)
+        fprintf('Training NN 3\n===== Current =====\nNeurons: %d\nTraining attempt: %d\Euclidean Distance: %f\nPerformance: %f\n=====  Best   =====\nNeurons: %d\nTraining attempt: %d\nEuclidean Distance: %f\nPerformance: %f', i, j, ERROR, tr.best_tperf, best_i, best_j, minERROR, best_perform);
     end
 end
 
@@ -59,6 +57,6 @@ xlabel('Expected')
 ylabel('Predicted')
 grid on
 
-[netTestOutputs ; targetsSet(:, tr.testInd)]'
+% [netTestOutputs ; targetsSet(:, tr.testInd)]'
 
 end

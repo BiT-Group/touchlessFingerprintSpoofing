@@ -9,7 +9,7 @@ classdef Parameters
         thresholdPrecision = 0.00001;
         quantDimension = 91; %expected to be an odd value
         ILBPNeighborhoodDimension = 3; %expected to be an odd value
-        foldersWithRealFingers = [1 5 6]; %these folders (from the "Samples" folder) will be concatenated into one single final folder (as one class)
+        foldersWithRealFingers = [1]; %these folders (from the "Samples" folder) will be concatenated into one single final folder (as one class)
                                           % FOLDER 1 MUST ALWAYS BE REAL
                                           % FINGERS
         numberOfSamplesEachClass = 20;

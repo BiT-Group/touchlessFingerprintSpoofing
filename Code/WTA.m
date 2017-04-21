@@ -1,5 +1,5 @@
 function [ output ] = WTA(input)
-%% Winner-take-all algorithm
+%% Winner-takes-all algorithm
 [value index] = max(input(:));
 [x y] = ind2sub(size(input),index);
 

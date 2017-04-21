@@ -5,7 +5,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 close all;
-clear all;
+% clear all;
 clc;
 
 %% Scenario 1: real fingers vs fake fingers (all classes togheter)

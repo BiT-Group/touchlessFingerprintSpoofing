@@ -24,7 +24,7 @@ while folderExists == 1
         fprintf(strcat('Copying images from folder: \0', samplesFolderRoot, num2str(currentFolderNumber), '/raw/\n'));
         cd(strcat(samplesFolderRoot, num2str(currentFolderNumber), '/raw/'));
         
-        listing0 = dir('*_0.pgm');
+        listing = dir('*_0.pgm');
 %         listing1 = dir('*_1.pgm');
 %         listing2 = dir('*_2.pgm');
         
@@ -38,14 +38,14 @@ while folderExists == 1
             mkdir(strcat(inputFolderRoot, num2str(currentFolderNumber), '/'));
         end
         
-        for i = 1:size(listing0)
-            copyfile(strcat(samplesFolderRoot, num2str(currentFolderNumber), '/raw/', listing0(i).name), strcat(inputFolderRoot, num2str(currentFolderNumber), '/', listing0(i).name));
+        for i = 1:size(listing)
+            copyfile(strcat(samplesFolderRoot, num2str(currentFolderNumber), '/raw/', listing(i).name), strcat(inputFolderRoot, num2str(currentFolderNumber), '/', listing(i).name));
 %             copyfile(strcat(samplesFolderRoot, num2str(currentFolderNumber), '/raw/', listing1(i).name), strcat(inputFolderRoot, num2str(currentFolderNumber), '/', listing1(i).name));
 %             copyfile(strcat(samplesFolderRoot, num2str(currentFolderNumber), '/raw/', listing2(i).name), strcat(inputFolderRoot, num2str(currentFolderNumber), '/', listing2(i).name));
         end
         
 %         counter = counter + size(listing0, 1) + size(listing1, 1) + size(listing2, 1);
-        counter = counter + size(listing0, 1);
+        counter = counter + size(listing, 1);
     end
 end
 
