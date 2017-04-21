@@ -13,7 +13,7 @@ classdef Parameters
                                           % FOLDER 1 MUST ALWAYS BE REAL
                                           % FINGERS
         numberOfSamplesEachClass = 20;
-        numberPCAToUse = 2;
+        numberPCAToUse = 1;
         
         %% Data to be displayed
         showOriginalImage = false;
@@ -27,7 +27,7 @@ classdef Parameters
         
         %% Parallelism parameters
         useParallel = true;
-        useSpecificPoolSize = true; % matlab uses a default number of pools
+        useSpecificPoolSize = false; % matlab uses a default number of pools
                                     % if it is not specified
         poolSize = 4;
         

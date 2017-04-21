@@ -42,14 +42,14 @@ hitRate = hitRate/i;
 fprintf('\n\nnnet1:\nHit Rate: %.2f%%\nFalse Accept Rate: %.2f%%\nFalse Negativ Rate: %.2f%%\n', hitRate*100, FAR*100, FRR*100);
 
 %% Ploting regression
-netOutputs = net(localInput);
-trainOutputs = netOutputs(:, tr.trainInd);
-validationOutputs = netOutputs(:, tr.valInd);
-testOutputs = netOutputs(:, tr.testInd);
-trainTargets = localTargets(tr.trainInd);
-validationTargets = localTargets(tr.valInd);
-testTargets = localTargets(tr.testInd);
-figure, plotregression(trainTargets,trainOutputs,'Training', validationTargets,validationOutputs,'Validation', testTargets,testOutputs,'Test', localTargets,netOutputs,'All');
-
-figure, plotperform(tr);
+% netOutputs = net(localInput);
+% trainOutputs = netOutputs(:, tr.trainInd);
+% validationOutputs = netOutputs(:, tr.valInd);
+% testOutputs = netOutputs(:, tr.testInd);
+% trainTargets = localTargets(tr.trainInd);
+% validationTargets = localTargets(tr.valInd);
+% testTargets = localTargets(tr.testInd);
+% figure, plotregression(trainTargets,trainOutputs,'Training', validationTargets,validationOutputs,'Validation', testTargets,testOutputs,'Test', localTargets,netOutputs,'All');
+% 
+% figure, plotperform(tr);
 end
