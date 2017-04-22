@@ -31,17 +31,6 @@ for i = 2:size(folders, 1)
     target(i - 1) = -1;
     target(i) = 1;
     
-%     switch i
-%         case 2
-%             target = [-1 1 -1 -1]';
-%         case 3
-%             target = [-1 -1 1 -1]';
-%         case 4
-%             target = [-1 -1 -1 1]';
-%         otherwise
-%             error('Invalid class')
-%     end
-    
     for j = 1:size(textureDescriptorsFiles, 1)
         load(strcat(textureDescriptorsFolderRoot, num2str(i), '/', textureDescriptorsFiles(j).name));
         textureDescriptor = textureDescriptor';

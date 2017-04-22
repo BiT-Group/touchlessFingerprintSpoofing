@@ -1,8 +1,8 @@
-% clear all;
+clear all;
 close all;
 clc;
 
-% setupInputImages;
-% generateTextureDescriptors;
+setupInputImages;
+generateTextureDescriptors;
 trainAllNNs;
 generateAllMetrics;

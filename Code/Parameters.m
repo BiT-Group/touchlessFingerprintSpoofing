@@ -13,7 +13,7 @@ classdef Parameters
                                           % FOLDER 1 MUST ALWAYS BE REAL
                                           % FINGERS
         numberOfSamplesEachClass = 20;
-        numberPCAToUse = 1;
+        numberPCAToUse = 2;
         
         %% Data to be displayed
         showOriginalImage = false;

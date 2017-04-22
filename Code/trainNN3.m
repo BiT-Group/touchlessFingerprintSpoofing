@@ -45,7 +45,7 @@ for i = 10:20
         end
         
         clc
-        fprintf('Training NN 3\n===== Current =====\nNeurons: %d\nTraining attempt: %d\Euclidean Distance: %f\nPerformance: %f\n=====  Best   =====\nNeurons: %d\nTraining attempt: %d\nEuclidean Distance: %f\nPerformance: %f', i, j, ERROR, tr.best_tperf, best_i, best_j, minERROR, best_perform);
+        fprintf('Training NN 3\n===== Current =====\nNeurons: %d\nTraining attempt: %d\nEuclidean Distance: %f\nPerformance: %f\n=====  Best   =====\nNeurons: %d\nTraining attempt: %d\nEuclidean Distance: %f\nPerformance: %f', i, j, ERROR, tr.best_tperf, best_i, best_j, minERROR, best_perform);
     end
 end
 
