@@ -32,7 +32,8 @@ end
 
 hitRate = hitRate/i;
 
-fprintf('\n\nnnet:\nHit Rate: %.2f%%\n', hitRate*100);
+fprintf('\n\nnnet:\nHit Rate: %.2f%%\nNumber of neurons: %d\n', hitRate*100, net.layers{1}.size);
+
 
 %% Print confusion matrix
 for i = 1:size(confusionMatrix, 1)

@@ -1,5 +1,8 @@
 function [ ] = trainNN3()
 clc;
+loadParameters;
+global parameter;
+parameter.numberPCAToUse = 4;
 
 [inputDataSet, targetsSet] = setDataSet23();
 
@@ -49,8 +52,12 @@ for i = 10:20
     end
 end
 
+generateMetrics3;
+
+fprintf('\n\n');
+
 %% Visualizing data
-load net/nnet3.mat;
+% load net/nnet3.mat;
 
 % figure, plot(targetsSet(tr.testInd), net(inputDataSet(:, tr.testInd)), 'ro')
 % xlabel('Expected')

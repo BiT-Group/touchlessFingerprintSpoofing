@@ -10,10 +10,9 @@ classdef Parameters
         quantDimension = 91; %expected to be an odd value
         ILBPNeighborhoodDimension = 3; %expected to be an odd value
         foldersWithRealFingers = [1]; %these folders (from the "Samples" folder) will be concatenated into one single final folder (as one class)
-                                          % FOLDER 1 MUST ALWAYS BE REAL
-                                          % FINGERS
+                                      % FOLDER 1 MUST ALWAYS BE REAL FINGERS
         numberOfSamplesEachClass = 40;
-        numberPCAToUse = 2;
+        
         
         %% Data to be displayed
         showOriginalImage = false;
@@ -32,12 +31,18 @@ classdef Parameters
         %% Parallelism parameters
         useParallel = true;
         useSpecificPoolSize = false; % matlab uses a default number of pools
-                                     % if it is not specified
+        % if it is not specified
         poolSize = 4;
         
         %% MEX-files parameters
         useMEXFiles = true;
         MEXFilesList = cellstr(['getILBPBinaryWord_'; 'getPossibleCodes_ '; 'decideQuant_      ']);
+    end
+    
+    properties (Access = public, Constant = false)
+        %% Code parameters
+        numberPCAToUse = 2;
+        
     end
     
     methods

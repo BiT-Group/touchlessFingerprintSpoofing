@@ -1,5 +1,8 @@
 function [ ] = trainNN2()
 clc;
+loadParameters;
+global parameter;
+parameter.numberPCAToUse = 8;
 
 [inputDataSet, targetsSet] = setDataSet23();
 
@@ -65,6 +68,8 @@ for targetClass = 2:size(targetsSet, 1)
 
 %     [netTestOutputs ; netTargets(:, tr.testInd)]'
 end
+
+generateMetrics2;
 
 fprintf('\n\n');
 

@@ -44,7 +44,8 @@ for targetClass = 2:size(listing, 1) + 1
     FRR = FRR/i;
     hitRate = hitRate/i;
 
-    fprintf('\n\n%s:\nHit Rate: %.2f%%\nFalse Accept Rate: %.2f%%\nFalse Negativ Rate: %.2f%%\n', netOutputFileName, hitRate*100, FAR*100, FRR*100);
+    fprintf('\n\n%s:\nHit Rate: %.2f%%\nFalse Accept Rate: %.2f%%\nFalse Negativ Rate: %.2f%%\nNumber of neurons: %d\n', netOutputFileName, hitRate*100, FAR*100, FRR*100,net.layers{1}.size);
+    
 
     %% Ploting regression
 %     netOutputs = net(netInputs);
