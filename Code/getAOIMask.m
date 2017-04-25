@@ -44,8 +44,8 @@ if parameter.showRawAOIMask
 end
 
 %% Improving AOI mask with quantization
-fprintf('\nQuantizing AOI...\n');
-aoi = quantAOI(rawAOI);
+fprintf('\nImproving AOI...\n');
+aoi = improveAOI(rawAOI);
 
 if parameter.showAOIMask
     figure, imshow(255*aoi);
