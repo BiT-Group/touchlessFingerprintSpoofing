@@ -57,12 +57,12 @@ for i = 10:20
 end
 
 %% Visualizing data
-load net/nnet1.mat;
+% load net/nnet1.mat;
 
-figure, plot(localTargets(tr.testInd), net(localInput(:, tr.testInd)), 'ro')
-xlabel('Expected')
-ylabel('Predicted')
-grid on
+% figure, plot(localTargets(tr.testInd), net(localInput(:, tr.testInd)), 'ro')
+% xlabel('Expected')
+% ylabel('Predicted')
+% grid on
 
 % [netTestOutputs ; localTargets(tr.testInd)]'
 

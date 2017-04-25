@@ -52,10 +52,10 @@ end
 %% Visualizing data
 load net/nnet3.mat;
 
-figure, plot(targetsSet(tr.testInd), net(inputDataSet(:, tr.testInd)), 'ro')
-xlabel('Expected')
-ylabel('Predicted')
-grid on
+% figure, plot(targetsSet(tr.testInd), net(inputDataSet(:, tr.testInd)), 'ro')
+% xlabel('Expected')
+% ylabel('Predicted')
+% grid on
 
 % [netTestOutputs ; targetsSet(:, tr.testInd)]'
 

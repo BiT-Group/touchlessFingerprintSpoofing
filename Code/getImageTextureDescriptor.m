@@ -16,7 +16,12 @@ input = getInputImage(inputPath);
 
 if parameter.showOriginalImage
     figure, imshow(input);
-    title('Original image');
+    title('Original Image');
+end
+
+if parameter.showOriginalImageHistogram
+    figure, imhist(input);
+    title('Histogram of Original Image');
 end
 
 %% Getting AOI mask

@@ -12,4 +12,9 @@ if parameter.showBlurredImage
     title('Blurred image');
 end
 
+if parameter.showBlurredImageHistogram
+    figure, imhist(I);
+    title('Histogram of Blurred Image');
+end
+
 end
